@@ -8,6 +8,11 @@
         </div>
     </div>
     @endif
+    @if(Session::has('fail'))
+            <div class="alert alert-danger">
+                {{ Session::get('fail') }}
+            </div>
+            @endif
     <div class="row">
         <div class="col-md-12">
             <a href="{{ route('admin.create') }}" class="btn btn-success">New Post</a>
