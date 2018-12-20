@@ -13,7 +13,8 @@ Route::get('/', function () {
 Route::group(['prefix' => 'home'], function() {
     Route::get('home', [ 
         'uses' => 'PostController@getHome',
-        'as' => 'home.home'
+        'as' => 'home.home',
+        'middleware' => 'auth'
     ]);
         
     Route::get('post/{id}', [
@@ -31,7 +32,7 @@ Route::get('about', function() {
     return view('other.about');
 })->name('other.about');
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('', [
         'uses' => 'PostController@getAdminIndex',
         'as' => 'admin.index'
